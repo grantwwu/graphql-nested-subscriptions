@@ -1,0 +1,26 @@
+{
+  "name": "graphql-nested-subscriptions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ECraneWorldwide/graphql-nested-subscriptions.git"
+  },
+  "author": "",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/ECraneWorldwide/graphql-nested-subscriptions/issues"
+  },
+  "homepage": "https://github.com/ECraneWorldwide/graphql-nested-subscriptions#readme",
+  "dependencies": {
+    "apollo-server": "^2.1.0",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.0",
+    "nodemon": "^1.18.4"
+  }
+}

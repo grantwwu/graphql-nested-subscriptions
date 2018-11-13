@@ -36,24 +36,14 @@ const resolvers =
 {
     Subscription:
     {
-        foo: () => foo,
+        foo: {
+            resolve: (obj) => ({nested: obj}),
+            subscribe: () => pubsub.asyncIterator(PUBSUB_TOPIC)
+        },
         unnested:
         {
             resolve: (obj) => obj,
             subscribe: () => pubsub.asyncIterator(PUBSUB_TOPIC)
-        }
-    },
-    Foo:
-    {
-        nested:
-        {
-            resolve: (obj) => obj,
-            subscribe: (obj) =>
-            {
-                // Expecting { fooObj: true } here
-                console.log(obj);
-                return pubsub.asyncIterator(PUBSUB_TOPIC);
-            }
         }
     },
     Query:

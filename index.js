@@ -1,5 +1,5 @@
 const { ApolloServer, gql, PubSub } = require('apollo-server');
-const { makeExecutableSchema }      = require('graphql-tools');
+const { makeExecutableSchema } = require('graphql-tools');
 
 const PUBSUB_TOPIC = 'MY_TOPIC';
 
@@ -62,29 +62,26 @@ const resolvers =
     }
 };
 
-const schema = makeExecutableSchema({typeDefs, resolvers});
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const server = new ApolloServer(
     {
         schema,
-        context: async ({ req, connection }) =>
-        {
-            if (connection)
-            {
+        context: async ({ req, connection }) => {
+            if (connection) {
                 return {};
             }
-            else
-            {
+            else {
                 const token = req.headers.authorization || "";
                 return { token };
             }
-    },
+        },
     }
 );
 
 setInterval(() => pubsub.publish(PUBSUB_TOPIC, 'barbar'), 1000);
 
-server.listen().then(({ url, subscriptionsUrl  }) => {
+server.listen().then(({ url, subscriptionsUrl }) => {
     console.log(`🚀  Server ready at ${url}`);
     console.log(`🚀 Subscriptions ready at ${subscriptionsUrl}`);
 });
